@@ -41,11 +41,15 @@ export default function App() {
                 {repository.title} 
               </Text>
               
-              <View style={styles.techsContainer}>
-                <Text style={styles.tech}>
-                    {repository.techs}
+              <FlatList
+                style={styles.techsContainer}
+                data={repository.techs}
+                keyExtractor={(tech) => tech}
+                renderItem={({item: tech}) => (
+                  <Text style={styles.tech}>
+                    {tech}
                 </Text>
-              </View>
+                )}/>
 
               <View style={styles.likesContainer}>
                 <Text style={styles.likeText} testID={`repository-likes-${repository.id}`}>
